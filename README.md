@@ -15,8 +15,8 @@ When a lead is submitted through Meta's **Lead Ads Testing Tool**, it appears
 ## 🎬 Demo
 | Video | Link |
 |---|---|
-| Live demo | `<paste link>` |
-| Code & architecture walkthrough | `<paste link>` |
+| Live demo | `https://www.loom.com/share/3df9f528fab442ed8137cd2095ca3562` |
+| Code & architecture walkthrough | `https://www.loom.com/share/336288327882468ba174f3d6f55afcbb` |
 
 First version: [meta-lead-ads-rn-poc](https://github.com/shadowMomina/meta-lead-ads-rn-poc)
 
@@ -167,7 +167,7 @@ Quick local check without Meta: open `http://localhost:3000/test-lead`.
 **Assumptions**
 - Runs on an Android emulator with a temporary tunnel
 - The Page token is short-lived and refreshed before the demo
-- The client confirmed in writing that AI assistance was allowed
+
 
 **Limitations**
 - Leads are kept in memory (last 50) and cleared on restart
