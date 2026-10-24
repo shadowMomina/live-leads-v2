@@ -19,7 +19,10 @@ async function fetchLead(leadgenId) {
         `https://graph.facebook.com/${config.graphVersion}/${leadgenId}` +
         `?access_token=${encodeURIComponent(config.pageToken)}`;
     const response = await fetch(url);
-    if (!response.ok) throw new Error(`Graph API returned ${response.status}`);
+    if (!response.ok) {
+        const body = await response.text();
+        throw new Error(`Graph API returned ${response.status}: ${body.slice(0, 200)}`);
+    }
     const data = await response.json();
 
     const fields = {};

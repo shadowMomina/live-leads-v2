@@ -30,7 +30,11 @@ function createWebhookRouter(onLead) {
 
     // A lead notification
     router.post('/', (req, res) => {
-        if (!isValidSignature(req)) return res.sendStatus(403);
+        console.log('webhook POST arrived');
+        if (!isValidSignature(req)) {
+            console.error('rejected: signature does not match APP_SECRET');
+            return res.sendStatus(403);
+        }
         res.sendStatus(200); // answer fast so Meta doesn't retry
 
         for (const entry of req.body.entry || []) {
@@ -45,6 +49,7 @@ function createWebhookRouter(onLead) {
                     .then((lead) => {
                         leads.save(lead);
                         onLead(lead);
+                        console.log('lead sent to app:', lead.id);
                     })
                     .catch((err) => {
                         console.error('could not fetch lead:', err.message);
